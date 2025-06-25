@@ -48,6 +48,8 @@ function ice_loss_rate, temperature=temperature, $
 ;    Subroutine written by THPrettyman in 2017
 ;    1-May-2024 Updated by THPrettyman to include Pp to reduce ice table retreat rate.
 
+compile_opt idl3
+
 ; defaults
 T=293.d0  ; 20degC (about room temperature)
 deltaZ=0.001 ; meters (default is 1 mm)
@@ -68,7 +70,7 @@ Pt=611. ; Triple point pressure (Pa)
 Tt=273.16 ; Triple point temperature (K)
 R=8.314459848 ; Universal gas constant (MJ/Mmol-K)
 kB=1.3806485279d-23 ; Boltzmann constant (J/K)
-NA=6.02214085774d23 ; Avagadro's number (/mol)
+;NA=6.02214085774d23 ; Avagadro's number (/mol)
 ; mass of a water molecule
 ;   c=parse_chemical_formula('H2O')
 ;   m=c.MW/NA/1000.d0 ; mass of a molecule in kg

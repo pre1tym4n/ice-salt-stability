@@ -24,7 +24,7 @@ function salty_ice_loss1, zf, wsalt=wsalt, pp_profile=pp_profile, verbose=verbos
 ; 
 ; THP - 11-Apr-2024 
 ;
-compile_opt idl2
+compile_opt idl3
 
 pp_prof={z:[0d,1d],pp:[0d,0d]}
 if keyword_set(pp_profile) then pp_prof=pp_profile 
@@ -49,7 +49,7 @@ Ea=0.7               ; Activation energy in eV
 nu=2d12              ; Lattice frequency (s-1)
 
 ; Constants
-spjyr=31557600d0      ; seconds per Julian year
+;spjyr=31557600d0      ; seconds per Julian year
 nA=6.02214076d23      ; Avogadro's number (#/mol)
 kB=1.380649d-23       ; Boltzman's constant (J/K)
 eV=1.602176634e-19    ; J/eV

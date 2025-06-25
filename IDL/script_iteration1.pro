@@ -2,6 +2,8 @@
 ; Iteration 1
 ; 
 
+compile_opt idl3
+
 spjyr=31557600d0
 
 zz=[0,25d-6,9d-5,0.0001,0.0004,0.002,0.003,0.005,0.007,0.01,0.02,0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5]
@@ -123,13 +125,14 @@ p[0].symbol='o' & p[0].sym_filled=1
 p[0].xthick=2 & p[0].xtickdir=1 & p[0].xticklen=0.012 & p[0].xtickfont_name='Arial' & p[0].xtickfont_size=18 & p[0].xtitle='Depth (m)'
 p[0].ythick=2 & p[0].ytickdir=1 & p[0].yticklen=0.012 & p[0].ytickfont_name='Arial' & p[0].ytickfont_size=18 & p[0].ytitle='Delay (Myr)'
 p[1]=plot(zz[id],diff_020[id]/spjyr/1d6,clip=0,symbol='s',sym_filled=1,name='20 wt%',/over)
-p[2]=plot(zz[id],diff_050[id]/spjyr/1d6,clip=0,symbol='tu',sym_filled=1,name='50 wt%',/over)
-p[3]=plot(zz[id],diff_075[id]/spjyr/1d6,clip=0,symbol='tl',sym_filled=1,name='75 wt%',/over)
-p[4]=plot(zz[id],diff_090[id]/spjyr/1d6,clip=0,symbol='D',sym_filled=1,name='90 wt%',/over)
+p[2]=plot(zz[id],diff_030[id]/spjyr/1d6,clip=0,symbol='tr',sym_filled=1,name='30 wt%',/over)
+p[3]=plot(zz[id],diff_050[id]/spjyr/1d6,clip=0,symbol='tu',sym_filled=1,name='50 wt%',/over)
+p[4]=plot(zz[id],diff_075[id]/spjyr/1d6,clip=0,symbol='tl',sym_filled=1,name='75 wt%',/over)
+p[5]=plot(zz[id],diff_090[id]/spjyr/1d6,clip=0,symbol='D',sym_filled=1,name='90 wt%',/over)
 p[0].sym_size=0.5
 p[1].sym_size=0.5
 p[0].yrange=[0,60]
-ll=legend(target=p,position=[0.15,65],/data)
+ll=legend(target=p, position = [0.15,65],/data)
 ll.font_size=16
 ll.transparency=100
 p[0].position=[0.11,0.09,0.95,0.95]
