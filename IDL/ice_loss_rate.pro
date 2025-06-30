@@ -6,7 +6,8 @@ function ice_loss_rate, temperature=temperature, $
                         Pp=Pp  
 ;
 ; Purpose: Calculate the instantaneous ice retreat rate
-;          for a porous surface based on Shorghofer (2008).
+;          for a homogeneous, porous planetary surface exposed to 
+;          vacuum - based on Shorghofer (2008).
 ;          
 ; Inputs: (keywords, defaults in parens)
 ;       temperature - temperature of the lag deposit  - Kelvin (293K)         
@@ -28,13 +29,10 @@ function ice_loss_rate, temperature=temperature, $
 ;       .Pp         - partial vapor pressure from other water vapor sources (Pa)
 ;       .vbar       - mean thermal velocity (m/s)
 ;       .Dk         - diffusion coefficient (m2/s)
-;       .MFP        - mean free path of molecules (m) == 2 Dk / vbar  ***
+;       .MFP        - mean free path of molecules (m) == 2 Dk / vbar  (ref. Chen)
 ;       .DT         - mean time between collisions (s) == .MFP / vbar
-;       .Ltrk       - transport mean free path 
 ;       .Jbar       - mass flux of water from the surface (kg/m2/s)
 ;       .Ri         - instantaneous ice loss rate (m/s) (recession velocity)
-; 
-; *** From charts by Xiaolei Chen (diffusion_equation.pdf)
 ; 
 ; Example:  From Schorghofer (2008) - particle diameter of 100 microns,
 ;           tortuosity of 2, porosity of 0.5, depth of 1 m, and a 
@@ -44,9 +42,16 @@ function ice_loss_rate, temperature=temperature, $
 ;           print, r.ri*1.e9*3.154e+7   ; note: 3.154e+7 s/year
 ;           ; this gives 8.5 m (per billion years)
 ; 
+; Reference:
+;   Chen, X. - https://www.ams.stonybrook.edu/~chenx/notes/diffusion_equation.pdf
+;   Schorghofer, N. (2008), The lifetime of ice on main belt asteroids,
+;         Astrophysical Journal, Vol. 682 Issue 1 Pages 697-705,
+;         DOI: 10.1086/588633
+;         
 ; Version:
 ;    Subroutine written by THPrettyman in 2017
 ;    1-May-2024 Updated by THPrettyman to include Pp to reduce ice table retreat rate.
+;    26-Jun-2025 Version for general distribution - THPrettyman
 
 compile_opt idl3
 
@@ -70,11 +75,9 @@ Pt=611. ; Triple point pressure (Pa)
 Tt=273.16 ; Triple point temperature (K)
 R=8.314459848 ; Universal gas constant (MJ/Mmol-K)
 kB=1.3806485279d-23 ; Boltzmann constant (J/K)
-;NA=6.02214085774d23 ; Avagadro's number (/mol)
-; mass of a water molecule
-;   c=parse_chemical_formula('H2O')
-;   m=c.MW/NA/1000.d0 ; mass of a molecule in kg
-m=2.9914699d-26 ; kg (from the above two lines of code)
+MW=18.01528d0 ; Molecular weight of water (H2O) (g/mol)
+NA=6.02214085774d23 ; Avagadro's number (/mol)
+m=MW/NA/1000.d0 ; mass of a molecule in kg  
 rho_bulk_ice=930.d0 ; kg/m3
 
 ; equilibrium vapor pressure (Pa)

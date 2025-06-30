@@ -1,7 +1,9 @@
 function salty_ice_loss1, zf, wsalt=wsalt, pp_profile=pp_profile, verbose=verbose
 ;
 ; Purpose: Model ice retreat assuming the partial pressure from 
-;          water vapor sourced from salt is known.
+;          water vapor sourced from salt is known. The presence
+;          of water vapor from dehydration of salt reduces
+;          the ice retreat rate.
 ;          
 ; Inputs:
 ;    zf         - Ice table depth (m)
@@ -14,6 +16,7 @@ function salty_ice_loss1, zf, wsalt=wsalt, pp_profile=pp_profile, verbose=verbos
 ;                 
 ;                 This is the default if the keyword is not set.
 ;    verbose    - If set, then generate plots and diagnostics
+;    Note: Regolith paramters and salt composition are hardwired (below).
 ;                 
 ; Outputs:
 ;    See output structure. The most important parameters are:
@@ -30,7 +33,6 @@ pp_prof={z:[0d,1d],pp:[0d,0d]}
 if keyword_set(pp_profile) then pp_prof=pp_profile 
 
 ; Regolith parameters
-;zf=0.15d0        ; Ice table depth (m)
 dz=0.000025       ; Step size (m)
 ncl=50L           ; Number of steps close to the ice table where vapor is being released from salt
 temp=155d0        ; 155K temperature
@@ -61,7 +63,6 @@ pp=parse_chemical_formula(form)
 n0=wfrac/(pp.mw/1000)*nA*rho_bulk*nwat       ; water molecules per m3
 
 ; Ice table retreat sans salt
-tic
 nn=long(zf/dz)+1  ; number of steps
 zz=dindgen(nn)*dz
 vv=dblarr(nn)
@@ -100,7 +101,6 @@ for i=i0,source.length-1 do begin
   endfor
 endfor
 n=n/dk
-toc
 
 ; Calculate pressure with depth
 Psalt=(n/nA)*Rg*temp

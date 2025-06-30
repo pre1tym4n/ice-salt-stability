@@ -1,8 +1,20 @@
 ;
-; Iteration 1
+; Script for Iteration 1
 ; 
+; This script calculates the delay in ice table arrival at depth as a function of the abundance of 
+; natron in the regolith. The regolith parameters (porosity and grain size) are hardwired in
+; salty_ice_loss1.pro - this routine must be edited to change temperature, porosity, and grain
+; size. The delay is the excess amount of time for the ice table to reach depth compared 
+; to ice retreat without hydrated salt.
+; 
+; A plot is generated that shows the delay as a function of depth for natron weight fractions
+; ranging from 0.1 to 0.9.
+; 
+; THPrettyman - 30-Jun-2025
 
 compile_opt idl3
+
+dark=boolean(0)   ; change to boolean(1) to enable black chart background
 
 spjyr=31557600d0
 
@@ -117,6 +129,8 @@ endforeach
 
 diff_090=(tt1-tt)
 
+
+
 id=[0,lindgen(16-6+1)+6]
 w=window(dimensions=[800,800])
 p=objarr(10)
@@ -135,21 +149,23 @@ p[0].yrange=[0,60]
 ll=legend(target=p, position = [0.15,65],/data)
 ll.font_size=16
 ll.transparency=100
-p[0].position=[0.11,0.09,0.95,0.95]
-
-w.background_color='black'
-p[0].color='white'
-p[0].xcolor='white'
-p[0].ycolor='white'
-p[1].color='white'
-p[2].color='white'
-p[3].color='white'
-p[4].color='white'
-ll.color='white'
-ll.text_color='white'
 p[0].xtickfont_size=24
 p[0].ytickfont_size=24
 p[0].position=[0.14,0.11,0.95,0.95]
+
+if dark then begin 
+  w.background_color='black'
+  p[0].color='white'
+  p[0].xcolor='white'
+  p[0].ycolor='white'
+  p[1].color='white'
+  p[2].color='white'
+  p[3].color='white'
+  p[4].color='white'
+  p[5].color='white'
+  ll.color='white'
+  ll.text_color='white'
+endif
 
 
 end
