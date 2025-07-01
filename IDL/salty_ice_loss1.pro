@@ -46,6 +46,7 @@ wfrac=0.05           ; Weight fraction
 if keyword_set(wsalt) then wfrac=wsalt
 print, wfrac
 form='Na2CO3(H2O)10' ; Emperical formula
+mw=286.13901d0       ; Molecular weight (g/mol)
 nwat=10              ; Number of bound water modecules
 Ea=0.7               ; Activation energy in eV
 nu=2d12              ; Lattice frequency (s-1)
@@ -59,8 +60,7 @@ kB_eV=kB/eV           ; Boltzman's constant (eV/K)
 Rg=8.31446261815324d0 ; Ideal gas constant (m3-Pa/mol/K)
 
 ; Calculate the volumetric number density of bound water
-pp=parse_chemical_formula(form)
-n0=wfrac/(pp.mw/1000)*nA*rho_bulk*nwat       ; water molecules per m3
+n0=wfrac/(mw/1000)*nA*rho_bulk*nwat       ; water molecules per m3
 
 ; Ice table retreat sans salt
 nn=long(zf/dz)+1  ; number of steps
