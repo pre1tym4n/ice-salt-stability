@@ -1,6 +1,6 @@
 # IDL – Ice-Retreat Model with Hydrated Salt
 
-This repository provides an IDL implementation of the model described in Landis et al. (2024), *"Role of Natron in Delaying Retreat of Buried Ice Tables on Ceres."*
+This repository provides an IDL implementation of the model described in Landis et al. (2025), *"Role of Natron in Delaying Retreat of Buried Ice Tables on Ceres."*
 
 ## `script_iteration1`
 
