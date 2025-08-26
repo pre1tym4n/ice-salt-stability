@@ -1,6 +1,6 @@
 # Matlab - Ice-retreat model with hydrated salt
 
-A Matlab version of the model described in Landis et al. (2024), “Role of natron in delaying retreat of buried ice tables on Ceres” is contained here. 
+A Matlab version of the model described in Landis et al. (2025), “Role of natron in delaying retreat of buried ice tables on Ceres” is contained here. 
 
 ## salt_retreat_natron.m
 

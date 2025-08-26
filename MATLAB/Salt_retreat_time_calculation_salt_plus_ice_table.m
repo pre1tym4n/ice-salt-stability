@@ -6,7 +6,7 @@ clear all
 %% Pre-calculate salt pressure with depth without ice table
 wt_frac_salt=0.10;    % weight fraction of salts in the material being exposed
 depths=[0,25e-6,7.5e-5,0.0001,0.0004,0.002,0.003,0.005,0.007,0.01,0.02,0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5]; %sets depths of interest for the model, Iteration 0 must be pre-run at these depths and ice contents
-T=155;      %temperature of interest (pick from a variety, use an external thermal model for Ceres-realistic parameters)
+T=170;      %temperature of interest (pick from a variety, use an external thermal model for Ceres-realistic parameters)
 
 for n=2:max(size(depths))
     n
@@ -34,12 +34,11 @@ Av=6.02214076e23;   %Avagadro's number to convert number density to mol density
 delta_H=51058;      %enthalpy of sublimation of water 
 Pt=611;             %reference pressure for C-C equation (in Schorghofer, 2005)
 Tt=273.16; 
-rho_ice=925;        %density of water ice in kg/m^3  %Tom uses 930 kg/m^3 vs this (source of error??)
-
+rho_ice=925;        %density of water ice in kg/m^3
 tau=2;     %tortuoisty 
 phi=0.2;   %porosity
 r=(10e-6)/2;   %particle radius (NOT diameter!!)
-kb=1.380649e-23;   % J/K        %Boltzman's constant in MKS units (THIS ONE MUST BE IN J/K FOR SCHORGHOFER EQS)
+kb=1.380649e-23;   % J/K        %Boltzman's constant in MKS units (for use with Schorghofer equations)
 m_molecular=2.9915e-26; %kg molecular mass of water
 
 % time scaling

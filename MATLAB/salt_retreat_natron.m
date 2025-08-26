@@ -13,7 +13,7 @@ rho_ice=925;        %density of water ice in kg/m^3
 
 tau=2;     %tortuoisty 
 phi=0.2;   %porosity
-r=(10e-6)/2;   %particle radius (NOT diameter!!)
+r=(10e-6)/2;   %particle radius 
 kb=1.380649e-23;   % J/K        %Boltzman's constant in MKS units (THIS ONE MUST BE IN J/K FOR SCHORGHOFER EQS)
 m_molecular=2.9915e-26; %kg molecular mass of water
 
@@ -43,7 +43,7 @@ Ea=0.7;   %escape energy in eV
 nu=2e12;  %escape attempt frequency in 1/s
 n_waters=10; %number of waters per salt grain
 
-lithic_density=2000;    %kg/m^3 density of Ceres regolith if 2700, 2000 to match Tom's result
+lithic_density=2000;    %kg/m^3 density of Ceres regolith
 rho_bulk=lithic_density*(1-phi);  %density of overburden layer
 molar_mass_natron=0.28614; %kg/mol of natron 
 
@@ -85,7 +85,7 @@ n_density=zeros(1, max(size(dz_edges)));
 
 for n=1:max(size(dz_edges))
      for m=1:n
-         n_density(n)=n_density(n)+dz_edges(m)*sum(dz_edges(m:end).*n_remain_flux(m:end)); %% NEED THE SOURCE AT THE CENTER, INTEGRATE AT TOP AND OBTTOM LAYERS
+         n_density(n)=n_density(n)+dz_edges(m)*sum(dz_edges(m:end).*n_remain_flux(m:end)); %% we need the source at the center, so limits of integration are the top and bottom of the layer
      end
 end
 
@@ -94,7 +94,7 @@ n_density_div_Av=n_density_div_Dk./Av;
 
 %calculate P based on ideal gas law from n_density above
 
-P_depth=(n_density_div_Av*R*T);       %%N is really number density which includes the volume, so this is fine 
+P_depth=(n_density_div_Av*R*T);       %%N here is number density, which incorporates volume
 
 %normalize P with depth to the water saturation vapor pressure
 
