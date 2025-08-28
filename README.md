@@ -1,3 +1,6 @@
+This repository is archived at Zenodo: 10.5281/zenodo.16967071
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16967071.svg)](https://doi.org/10.5281/zenodo.16967071)
+
 # ice-salt-stability
 
 IDL and Matlab models described in Landis et al. (2025), “Role of natron in delaying retreat of buried ice tables on Ceres.”
@@ -19,4 +22,8 @@ This repository uses a dual-license model:
 
 Users are free to use, modify, and distribute the software with attribution, subject to the terms of each license.
 
-If you use this software, please cite the associated Zenodo archive: https://doi.org/10.5281/zenodo.XXXXXXX
+## Citation
+
+If you use this software, please cite:
+
+Prettyman, T., & Landis, M. (2025). *Software archive for Landis et al. (2025), Planetary Science Journal*. Zenodo. https://doi.org/10.5281/zenodo.16967071
