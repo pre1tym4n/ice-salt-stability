@@ -15,7 +15,7 @@ This directory contains Matlab scripts to calculate ice retreat.
 This repository uses a dual-license model:
 
 - **Software** is licensed under the [MIT License](https://opensource.org/licenses/MIT). See the LICENSE file for full terms.
-- **Documentation and metadata** are released under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+- **Documentation** is released under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
 
 Users are free to use, modify, and distribute the software with attribution, subject to the terms of each license.
 
